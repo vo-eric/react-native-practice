@@ -1,4 +1,6 @@
+import '@/global.css';
 import 'expo-dev-client';
+
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';

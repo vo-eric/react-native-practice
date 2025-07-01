@@ -9,7 +9,7 @@ import domtoimage from 'dom-to-image';
 import * as ImagePicker from 'expo-image-picker';
 import * as MediaLibrary from 'expo-media-library';
 import { useRef, useState } from 'react';
-import { ImageSourcePropType, Platform, StyleSheet, View } from 'react-native';
+import { ImageSourcePropType, Platform, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { captureRef } from 'react-native-view-shot';
 
@@ -92,9 +92,9 @@ export default function Index() {
   }
 
   return (
-    <GestureHandlerRootView style={styles.container}>
-      <View style={styles.container}>
-        <View style={styles.imageContainer}>
+    <GestureHandlerRootView className='flex-1 bg-[#25292e] items-center'>
+      <View className='flex-1 bg-[#25292e] items-center'>
+        <View className='flex-1'>
           <View ref={imageRef} collapsable={false}>
             <ImageViewer
               imgSource={PlaceholderImage}
@@ -106,8 +106,8 @@ export default function Index() {
           )}
         </View>
         {showAppOptions ? (
-          <View style={styles.optionsContainer}>
-            <View style={styles.optionsRow}>
+          <View className='absolute bottom-[80px]'>
+            <View className='flex-row items-center'>
               <IconButton icon='refresh' label='Reset' onPress={onReset} />
               <CircleButton onPress={onAddSticker} />
               <IconButton
@@ -118,7 +118,7 @@ export default function Index() {
             </View>
           </View>
         ) : (
-          <View style={styles.footerContainer}>
+          <View className='flex-1 basis-1/3 items-center'>
             <Button
               theme='primary'
               label='Choose a photo'
@@ -137,35 +137,3 @@ export default function Index() {
     </GestureHandlerRootView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#25292e',
-    alignItems: 'center',
-  },
-  imageContainer: {
-    flex: 1,
-  },
-  text: {
-    color: '#fff',
-  },
-  button: {
-    fontSize: 20,
-    textDecorationLine: 'underline',
-    color: '#fff',
-  },
-  footerContainer: {
-    flex: 1 / 3,
-    alignItems: 'center',
-  },
-
-  optionsContainer: {
-    position: 'absolute',
-    bottom: 80,
-  },
-  optionsRow: {
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-});
